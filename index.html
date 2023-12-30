@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" class="html">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="dist/style.css" />
+    <script src="js/script.js" defer></script>
+    <title>Frontend Mentor | Age calculator app</title>
+  </head>
+  <body class="page">
+    <main class="main">
+      <form action="#" class="form">
+        <div class="form__wrapper">
+          <div class="input-container">
+            <label for="day" class="input__label">DAY</label>
+            <input type="text" name="day" id="day" placeholder="DD" class="input__field" />
+            <span class="input__error">Must be a valid day</span>
+          </div>
+          <div class="input-container">
+            <label for="month" class="input__label">MONTH</label>
+            <input type="text" name="month" id="month" placeholder="MM" class="input__field" />
+            <span class="input__error">Must be a valid month</span>
+          </div>
+          <div class="input-container">
+            <label for="year" class="input__label">YEAR</label>
+            <input type="text" name="year" id="year" placeholder="YYYY" class="input__field" />
+            <span class="input__error">Must be a valid year</span>
+          </div>
+        </div>
+        <div class="form__button">
+          <img src="assets/images/icon-arrow.svg" alt="" class="form__button-img" />
+        </div>
+      </form>
+
+      <div class="result">
+        <div class="result__year"><span data-count="">--</span><span>years</span></div>
+        <div class="result__month"><span data-count="">--</span><span>months</span></div>
+        <div class="result__day"><span data-count="">--</span><span>days</span></div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" class="footer__link">Frontend Mentor</a>.
+        Coded by <a href="https://github.com/adryan090" class="footer__link">adryan090</a>.
+      </p>
+    </footer>
+  </body>
+</html>
