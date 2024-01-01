@@ -50,10 +50,10 @@ function calculateAge() {
     let initialCount = 0;
     const finalCount = counter.dataset.count;
 
-    const counting = setInterval(updateCounting, 50);
+    const counting = setInterval(updateCounting, 2000 / finalCount);
 
     function updateCounting() {
-      initialCount = finalCount > 99 ? initialCount + 10 : ++initialCount;
+      initialCount = finalCount > 1500 ? initialCount + 3 : finalCount > 1000 ? initialCount + 2 : ++initialCount;
       counter.innerHTML = initialCount;
       if (initialCount >= finalCount) clearInterval(counting);
     }
