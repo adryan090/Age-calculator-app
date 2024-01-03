@@ -1,0 +1,38 @@
+@use "../util" as u;
+
+.html {
+  @media (max-width: 48.75em) {
+    font-size: 56.25%;
+  }
+  @media (max-width: 39em) {
+    font-size: 50%;
+  }
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: var(--off-white);
+  font-family: u.$font;
+
+  .main {
+    background-color: white;
+    width: 84rem;
+    padding: 5.4rem;
+    border-radius: 2rem 2rem 20rem 2rem;
+    @media (max-width: 56.25em) {
+      width: 90%;
+      max-width: 70rem;
+    }
+    @media (max-width: 48.75em) {
+      max-width: 60rem;
+    }
+    @media (max-width: 39em) {
+      max-width: 47rem;
+      padding: 6rem 2.5rem 10rem 2.5rem;
+      border-radius: 3rem 3rem 12rem 3rem;
+    }
+  }
+}

@@ -10,18 +10,19 @@ submitBtn.addEventListener("click", () => {
     (currentMonth = now.getMonth() + 1), // (0-11)
     (currentDay = now.getDate()), // (1-31)
   ];
+  const userInputs = [(yyyy = yearInput?.value), (mm = monthInput?.value), (dd = dayInput?.value)];
 
-  let isValidYear = checkYear(...currentDate);
-  let isValidMonth = checkMonth(...currentDate);
-  let isValidDay = checkDay(...currentDate);
+  let isValidYear = checkYear(...currentDate, ...userInputs);
+  let isValidMonth = checkMonth(...currentDate, ...userInputs);
+  let isValidDay = checkDay(...currentDate, ...userInputs);
 
   if (isValidDay && isValidMonth && isValidYear) {
-    calculateAge();
+    calculateAge(...userInputs);
   }
 });
 
-function calculateAge() {
-  let birthDate = new Date(yearInput.value, monthInput.value - 1, dayInput.value);
+function calculateAge(...userInputs) {
+  let birthDate = new Date(yyyy, mm - 1, dd);
   const now = new Date();
 
   let years = now.getFullYear() - birthDate.getFullYear();
@@ -53,7 +54,7 @@ function calculateAge() {
     const counting = setInterval(updateCounting, 2000 / finalCount);
 
     function updateCounting() {
-      initialCount = finalCount > 1500 ? initialCount + 3 : finalCount > 1000 ? initialCount + 2 : ++initialCount;
+      initialCount = ++initialCount;
       counter.innerHTML = initialCount;
       if (initialCount >= finalCount) clearInterval(counting);
     }
@@ -68,21 +69,20 @@ function toggleError(isBadInput, errorElement, errorText) {
   errorElement.innerHTML = errorText;
 }
 
-function checkYear(...currentDate) {
-  let value = yearInput.value;
-  const isEmpty = value.length === 0;
+function checkYear(...[currentDate, userInputs]) {
+  const isEmpty = yyyy.length === 0;
 
-  value = Number(value);
-  const isNumber = parseFloat(value);
-  const isInteger = Number.isInteger(value);
+  yyyy = Number(yyyy);
+  const isNumber = parseFloat(yyyy);
+  const isInteger = Number.isInteger(yyyy);
 
-  const isFutureYear = value > currentYear;
+  const isFutureYear = yyyy > currentYear;
 
   if (isEmpty) {
     toggleError(true, yearErrorMsg, "This field is required");
     return false;
   }
-  if (!isInteger || value < 0) {
+  if (!isInteger || yyyy < 1800) {
     toggleError(true, yearErrorMsg, "Must be a valid year");
     return false;
   }
@@ -95,17 +95,16 @@ function checkYear(...currentDate) {
   return true;
 }
 
-function checkMonth(...currentDate) {
-  let value = monthInput.value;
-  const isEmpty = value.length === 0;
+function checkMonth(...[currentDate, userInputs]) {
+  const isEmpty = mm.length === 0;
 
-  value = Number(value);
-  const isNumber = parseFloat(value);
-  const isInteger = Number.isInteger(value);
+  mm = Number(mm);
+  const isNumber = parseFloat(mm);
+  const isInteger = Number.isInteger(mm);
 
-  const isInvalid = value > 12 || value < 1;
+  const isInvalid = mm > 12 || mm < 1;
 
-  const isFutureMonth = +monthInput.value > currentMonth && +yearInput.value === currentYear;
+  const isFutureMonth = +mm > currentMonth && +yyyy === currentYear;
   if (isEmpty) {
     toggleError(true, monthErrorMsg, "This field is required");
     return false;
@@ -124,37 +123,35 @@ function checkMonth(...currentDate) {
   return true;
 }
 
-function checkDay(...currentDate) {
-  let value = dayInput.value;
-  const isEmpty = value.length === 0;
+function checkDay(...[currentDate, userInputs]) {
+  const isEmpty = dd.length === 0;
 
-  value = Number(value);
-  const isNumber = parseFloat(value);
-  const isInteger = Number.isInteger(value);
+  dd = Number(dd);
+  const isNumber = parseFloat(dd);
+  const isInteger = Number.isInteger(dd);
 
-  const daysInMonth = [
-    { totalDays: 31 },
-    { totalDays: 28 },
-    { totalDays: 31 },
-    { totalDays: 30 },
-    { totalDays: 31 },
-    { totalDays: 30 },
-    { totalDays: 31 },
-    { totalDays: 31 },
-    { totalDays: 30 },
-    { totalDays: 31 },
-    { totalDays: 30 },
-    { totalDays: 31 },
+  const totalDays = [
+    null,
+    (january = 31),
+    (february = 28),
+    (march = 31),
+    (april = 30),
+    (may = 31),
+    (june = 30),
+    (july = 31),
+    (august = 31),
+    (september = 30),
+    (october = 31),
+    (november = 30),
+    (december = 31),
   ];
 
-  let isLeapYear = checkLeapYear(yearInput);
-  if (isLeapYear) daysInMonth[1].totalDays = 29;
+  let isLeapYear = checkLeapYear(yyyy);
+  if (isLeapYear) totalDays[2] = 29;
 
-  const isInvalid =
-    dayInput.value > daysInMonth[monthInput.value - 1]?.totalDays || dayInput.value < 1 || dayInput.value > 31;
+  const isInvalid = dd > totalDays[mm] || dd < 1;
 
-  const isFutureDay =
-    +dayInput.value > currentDay && +monthInput.value === currentMonth && +yearInput.value === currentYear;
+  const isFutureDay = +dd > currentDay && +mm === currentMonth && +yyyy === currentYear;
 
   if (isEmpty) {
     toggleError(true, dayErrorMsg, "This field is required");
@@ -174,9 +171,6 @@ function checkDay(...currentDate) {
   return true;
 }
 
-function checkLeapYear(input) {
-  const year = input.value;
-  if (year % 100 === 0 && year % 400 !== 0) return false;
-  else if (year % 4 === 0) return true;
-  else return false;
+function checkLeapYear(yyyy) {
+  return yyyy % 4 === 0 && !(yyyy % 100 === 0 && yyyy % 400 !== 0) ? true : false;
 }

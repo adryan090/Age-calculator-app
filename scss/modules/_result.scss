@@ -1,0 +1,29 @@
+@use "../util" as u;
+
+.result {
+  &__year,
+  &__month,
+  &__day {
+    font-family: u.$font;
+    font-weight: 800;
+    font-style: italic;
+    font-size: 10.5rem;
+    line-height: 1.1;
+    @media (max-width: 48.75em) {
+      font-size: 6.5rem;
+    }
+  }
+  span:first-child {
+    letter-spacing: 2rem;
+    color: var(--purple);
+    @media (max-width: 39em) {
+      letter-spacing: 1rem;
+    }
+  }
+  span:last-child {
+    margin-left: -1rem;
+    @media (max-width: 39em) {
+      margin-left: 0;
+    }
+  }
+}

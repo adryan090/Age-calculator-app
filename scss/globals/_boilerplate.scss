@@ -1,6 +1,3 @@
-// @use "../util" as *; // no namespace
-@use "../util" as u;
-
 *,
 *::before,
 *::after {
@@ -9,10 +6,14 @@
   padding: 0;
 }
 
+.html {
+  font-size: 62.5%;
+}
+
 .html,
 .page {
   width: 100%;
   height: 100%;
-  font-family: u.$font;
+
   box-sizing: border-box;
 }

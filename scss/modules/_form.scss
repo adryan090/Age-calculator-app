@@ -1,0 +1,121 @@
+@use "../util" as u;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  &__wrapper {
+    display: flex;
+    gap: 3.2rem;
+    @media (max-width: 39em) {
+      gap: 2.2rem;
+    }
+
+    .input-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+
+      .input__label {
+        font-family: u.$font;
+
+        font-weight: 700;
+        font-size: 1.4rem;
+        letter-spacing: 3px;
+        color: var(--smokey-grey);
+      }
+
+      .input__field {
+        font-family: u.$font;
+        font-size: 3.2rem;
+        font-weight: 700;
+        width: 16rem;
+        border: 1px solid var(--light-grey);
+        border-radius: 1rem;
+        padding-block: 1.1rem;
+        padding-inline-start: 2.2rem;
+
+        @media (max-width: 48.75em) {
+          font-size: 2.4rem;
+        }
+
+        @media (max-width: 39em) {
+          max-width: 11rem;
+          padding-block: 1.5rem;
+        }
+      }
+
+      .input__field:hover,
+      .input__field:focus {
+        outline: none;
+        cursor: pointer;
+        border-color: #7762a5;
+      }
+      .input__error {
+        display: none;
+        visibility: hidden;
+        pointer-events: none;
+        font-size: 1.4rem;
+        font-style: italic;
+      }
+      .input__error--active {
+        display: block;
+        visibility: visible;
+        pointer-events: all;
+        color: red;
+      }
+    }
+
+    @media (max-width: 56.25em) {
+      justify-content: center;
+    }
+  }
+  &__button {
+    width: 10rem;
+    height: 10rem;
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--purple);
+    z-index: 10;
+    &-img {
+      max-width: 100%;
+      @media (max-width: 39em) {
+        max-width: 40%;
+        font-weight: 900;
+      }
+    }
+    @media (max-width: 56.25em) {
+      align-self: center;
+      width: 8rem;
+      height: 8rem;
+      margin-block: 5rem;
+    }
+    @media (max-width: 39em) {
+      margin-block: 4rem;
+    }
+  }
+  &__button:hover {
+    cursor: pointer;
+    background-color: var(--off-black);
+  }
+  &::before {
+    height: 1px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    content: "";
+    width: 100%;
+    transform: translateY(calc(-5rem - 0.5px));
+    background-color: var(--light-grey);
+
+    @media (max-width: 56.25em) {
+      transform: translateY(calc(-9rem - 0.5px));
+    }
+    @media (max-width: 39em) {
+      transform: translateY(calc(-8rem - 0.5px));
+    }
+  }
+}

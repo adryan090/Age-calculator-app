@@ -1,0 +1,13 @@
+.footer {
+  position: absolute;
+  bottom: 2rem;
+  font-weight: 400;
+  font-style: italic;
+  &__attribution {
+    font-size: 11px;
+    text-align: center;
+  }
+  &__link {
+    color: hsl(228, 45%, 44%);
+  }
+}
