@@ -7,7 +7,7 @@
   &__wrapper {
     display: flex;
     gap: 3.2rem;
-    @media (max-width: 39em) {
+    @include u.breakpoint(small) {
       gap: 2.2rem;
     }
 
@@ -18,7 +18,6 @@
 
       .input__label {
         font-family: u.$font;
-
         font-weight: 700;
         font-size: 1.4rem;
         letter-spacing: 3px;
@@ -35,11 +34,11 @@
         padding-block: 1.1rem;
         padding-inline-start: 2.2rem;
 
-        @media (max-width: 48.75em) {
+        @include u.breakpoint("medium") {
           font-size: 2.4rem;
         }
 
-        @media (max-width: 39em) {
+        @include u.breakpoint(small) {
           max-width: 11rem;
           padding-block: 1.5rem;
         }
@@ -66,7 +65,7 @@
       }
     }
 
-    @media (max-width: 56.25em) {
+    @include u.breakpoint(large) {
       justify-content: center;
     }
   }
@@ -82,18 +81,18 @@
     z-index: 10;
     &-img {
       max-width: 100%;
-      @media (max-width: 39em) {
+      @include u.breakpoint(small) {
         max-width: 40%;
         font-weight: 900;
       }
     }
-    @media (max-width: 56.25em) {
+    @include u.breakpoint(large) {
       align-self: center;
       width: 8rem;
       height: 8rem;
       margin-block: 5rem;
     }
-    @media (max-width: 39em) {
+    @include u.breakpoint(small) {
       margin-block: 4rem;
     }
   }
@@ -111,10 +110,10 @@
     transform: translateY(calc(-5rem - 0.5px));
     background-color: var(--light-grey);
 
-    @media (max-width: 56.25em) {
+    @include u.breakpoint(large) {
       transform: translateY(calc(-9rem - 0.5px));
     }
-    @media (max-width: 39em) {
+    @include u.breakpoint(small) {
       transform: translateY(calc(-8rem - 0.5px));
     }
   }

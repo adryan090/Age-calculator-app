@@ -9,20 +9,20 @@
     font-style: italic;
     font-size: 10.5rem;
     line-height: 1.1;
-    @media (max-width: 48.75em) {
+    @include u.breakpoint(medium) {
       font-size: 6.5rem;
     }
   }
   span:first-child {
     letter-spacing: 2rem;
     color: var(--purple);
-    @media (max-width: 39em) {
+    @include u.breakpoint(small) {
       letter-spacing: 1rem;
     }
   }
   span:last-child {
     margin-left: -1rem;
-    @media (max-width: 39em) {
+    @include u.breakpoint(small) {
       margin-left: 0;
     }
   }

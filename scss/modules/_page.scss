@@ -1,10 +1,11 @@
 @use "../util" as u;
 
 .html {
-  @media (max-width: 48.75em) {
+  @include u.breakpoint(medium) {
     font-size: 56.25%;
   }
-  @media (max-width: 39em) {
+
+  @include u.breakpoint(small) {
     font-size: 50%;
   }
 }
@@ -22,14 +23,17 @@
     width: 84rem;
     padding: 5.4rem;
     border-radius: 2rem 2rem 20rem 2rem;
-    @media (max-width: 56.25em) {
+
+    @include u.breakpoint(large) {
       width: 90%;
       max-width: 70rem;
     }
-    @media (max-width: 48.75em) {
+
+    @include u.breakpoint(medium) {
       max-width: 60rem;
     }
-    @media (max-width: 39em) {
+
+    @include u.breakpoint(small) {
       max-width: 47rem;
       padding: 6rem 2.5rem 10rem 2.5rem;
       border-radius: 3rem 3rem 12rem 3rem;
